@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%=event.name%> | Event | Backfood</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    
+    <link rel='stylesheet' href='/javascripts/bootstrap/css/bootstrap.css' type="text/css" />
+    <link rel='stylesheet' href='/javascripts/bootstrap/css/bootstrap-responsive.css' type="text/css" />
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="/javascripts/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		$(function(){
+			$.getJSON("/attendees/<%=event._id%>", function(atts) {
+				var fblines = [];
+				var attlines = [];
+				attlines.push("<ul>");
+				$.each(atts, function(row, att){
+					if (att.feedback)
+					{
+						fblines.push("<blockquote>&ldquo;" + att.feedback + "&rdquo;</blockquote>");
+					}
+					attlines.push("<li>" + att.person + "</li>");
+				});
+				attlines.push("</ul>");
+				$("#attendees").html(attlines.join(""));
+				$("#feedbacks").html(fblines.join(""));
+			})
+		});
+	
+	</script>
+  </head>
+  <body>
+  	<div id="header">Backfood</div>
+  	
+  	<div class="container">
+  	
+  		<div class="row-fluid">
+  			<div class="span6">
+			    <h2><small>Event:</small> <%= event.name %></h1>
+			    <h3><small>Organiser:</small> <%= event.tutor %></h2>
+			    
+			    <!-- <p>event id: <%= event._id %></p> -->
+			</div>
+			<div class="span6">
+			    <%- event.qr%>
+			</div>
+	    </div>
+	    
+	    <div class="row-fluid">
+		    <div class="span6">
+		    	<h3>Attendees</h3>
+		    	<div id="attendees"></div>
+		    </div>
+		    <div class="span6">
+		    	<h3>Feedback</h3>
+			    <div id="feedbacks"></div>
+			</div>
+		</div>
+		
+	</div> <!-- container -->
+		
+	<script src="/javascripts/analytics.js" type="text/javascript"></script>
+  </body>
+</html>
