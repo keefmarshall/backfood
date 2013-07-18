@@ -105,7 +105,7 @@ exports.eventlist = function(req, res)
 function createQRCodeImgTag(text)
 {
     var qr = qrCode.qrcode(5, 'M'); // 6 gives us roughly 100 characters, 5 might be enough, not sure.
-    qr.addData("http://bmj-lt12328:3000/checkin/" + text);
+    qr.addData("http://backfood.herokuapp.com/checkin/" + text);
     qr.make();
     
     // NB the number here relates to the physical size of the generated image
