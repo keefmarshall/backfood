@@ -1,7 +1,9 @@
-ClassRATE
+Backfood
 =========
 
-Student-tutor feedback and attendance tracking.
+Feedback and attendance tracking.
+
+[What do you feedback with? Backfood of course!]
 
 App initially developed at #bmjhack 6-7 July 2013 by @keefmarshall and @wizrares.
 
