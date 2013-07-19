@@ -21,9 +21,17 @@
 				attlines.push("</ul>");
 				$("#attendees").html(attlines.join(""));
 				$("#feedbacks").html(fblines.join(""));
+				
+				$("#qrcode-help-link").click(qrcodeModal);
 			})
 		});
 	
+		function qrcodeModal()
+		{
+			$("#qrcode-help-modal .modal-body").load("/help/qrcode", {"ajax" : true});
+			$("#qrcode-help-modal").modal("show");
+			return false;
+		}
 	</script>
   </head>
   <body>
@@ -40,6 +48,7 @@
 			</div>
 			<div class="span6">
 			    <%- event.qr%>
+			    <p><small><a href="#" id="qrcode-help-link">What's this?</a></small></p>
 			</div>
 	    </div>
 	    
@@ -56,6 +65,16 @@
 		
 	</div> <!-- container -->
 		
+	<div class="modal fade hide" id="qrcode-help-modal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h3>Backfood Help</h3>
+    	</div>
+		<div class="modal-body">
+			Loading...
+		</div>
+	</div>
+	
 	<script src="/javascripts/analytics.js" type="text/javascript"></script>
   </body>
 </html>

@@ -15,7 +15,14 @@ exports.help = function(req, res)
 		else
 		{
 			var html = marked(content);
-			res.render("help", { help : html});				
+			if (req.query.ajax || req.body.ajax)
+			{
+				res.send(html);
+			}
+			else
+			{
+				res.render("help", { help : html });
+			}
 		}
 		
 	});
