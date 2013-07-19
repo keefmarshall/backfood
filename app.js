@@ -9,6 +9,7 @@ var express = require('express')
   , event = require('./routes/event')
   , people = require('./routes/people')
   , attendance = require('./routes/attendance')
+  , help = require("./routes/help")
   , http = require('http')
   , path = require('path');
 
@@ -66,6 +67,8 @@ app.get("/attended/:personid", attendance.attended);
 app.get("/attendees/:eventid", attendance.attendees);
 app.get("/attendance/:attendanceid", attendance.get);
 
+// HELP
+app.get("/help/:help", help.help);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

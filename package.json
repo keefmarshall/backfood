@@ -13,6 +13,8 @@
     "ejs": "*",
     "less-middleware": "*",
     "mongojs":"*",
-    "qrcode-npm": "*"
+    "qrcode-npm": "*",
+    "marked" : "*"
+    
   }
 }

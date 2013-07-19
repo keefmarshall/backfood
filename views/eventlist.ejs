@@ -6,23 +6,26 @@
   	<% } else { %>
 	    <title>All Events | Backfood</title>
 	<% } %>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+	<% include includes/styles-and-scripts.html %>    
   </head>
   <body>
-  	<div id="header">Backfood</div>
+  	<% include includes/header.html %>
   	
-  	<% if (tutorid) {%>
-		<h1>Events organised by <%=tutorid%></h1>
-	<% } else { %>
-	    <h1>All events</h1>
-    <% } %>
-    
-    <ul>
-	<% for(var i=0; i<events.length; i++) {%>
-	   <li><a href="/event/<%=events[i]._id%>"><%= events[i].name %></a></li>
-	<% } %>
-	</ul>
-    
+  	<div class="container">
+	  	<% if (tutorid) {%>
+			<h1>Events organised by <%=tutorid%></h1>
+		<% } else { %>
+		    <h1>All events</h1>
+	    <% } %>
+	    
+	    <ul>
+		<% for(var i=0; i<events.length; i++) {%>
+		   <li><a href="/event/<%=events[i]._id%>"><%= events[i].name %></a></li>
+		<% } %>
+		</ul>
+	</div>
+	    
 	<script src="/javascripts/analytics.js" type="text/javascript"></script>
   </body>
 </html>
